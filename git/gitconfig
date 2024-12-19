@@ -9,4 +9,4 @@ helper = osxkeychain
 defaultbranch = main
 
 [push]
-autoSetupRemote = always
+autoSetupRemote = true
