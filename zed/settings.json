@@ -7,6 +7,7 @@
 // custom settings, run the `zed: Open Default Settings` command
 // from the command palette
 {
+  "icon_theme": "Catppuccin Macchiato",
   "assistant": {
     "default_model": {
       "provider": "copilot_chat",
@@ -14,15 +15,27 @@
     },
     "version": "2"
   },
+  "terminal": {
+    "font_family": "JetBrainsMonoNL Nerd Font",
+    "font_size": 16,
+    "cursor_shape": "block",
+    "scrollbar": {
+      "visibility": "hidden"
+    }
+  },
+  "buffer_font_size": 16,
   "buffer_font_features": {
     "calt": false
   },
   "ui_font_size": 18,
-  "buffer_font_size": 16,
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "Tokyo Night Storm"
+    "dark": "Catppuccin Macchiato"
+  },
+  "indent_guides": {
+    "coloring": "indent_aware",
+    "line_width": 2
   },
   "format_on_save": "on",
   "autosave": "on_focus_change",
