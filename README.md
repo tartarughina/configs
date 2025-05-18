@@ -19,6 +19,7 @@ Once installed you can install all the other tools:
 - **vscode**: backup IDE in case I need to do something specific which is lacking in zed
 - **postman**: testing API and similar
 - **iterm2**: console emulator with more feature and better look than standard MacOS terminal
+- **firefox** and **chrome**: some other browsers, just in case something is waky on Safari
 
 ## Font and theme
 My goto theme is Catppuccin Macchiato and the fonts I prefer comes from Nerd Fonts, for the fancy icons
