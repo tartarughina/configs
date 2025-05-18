@@ -1,46 +1,130 @@
 // Zed settings
 //
 // For information on how to configure Zed, see the Zed
-// documentation: https://zed.dev/docs/configuring-zed
+// documentation: https://zed.dev/docs/configfuring-zed
 //
 // To see all of Zed's default settings without changing your
-// custom settings, run the `zed: Open Default Settings` command
-// from the command palette
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "icon_theme": "Catppuccin Macchiato",
-  "assistant": {
+  "show_edit_predictions": false,
+  "agent": {
+    "always_allow_tool_actions": true,
+    "model_parameters": [],
+    "single_file_review": true,
+    "profiles": {
+      "sky-net": {
+        "name": "SkyNet",
+        "tools": {
+          "rename": true,
+          "code_actions": true,
+          "contents": true,
+          "thinking": true,
+          "symbol_info": true,
+          "grep": true,
+          "read_file": true,
+          "find_path": true,
+          "open": true,
+          "now": true,
+          "move_path": true,
+          "list_directory": true,
+          "edit_file": true,
+          "fetch": true,
+          "edit_files": true,
+          "diagnostics": true,
+          "delete_path": true,
+          "create_file": true,
+          "create_directory": true,
+          "copy_path": true,
+          "code_symbols": true,
+          "batch_tool": true,
+          "terminal": true
+        },
+        "enable_all_context_servers": false,
+        "context_servers": {}
+      }
+    },
+    "default_profile": "sky-net",
     "default_model": {
-      "provider": "copilot_chat",
-      "model": "gpt-4o"
+      "provider": "bedrock",
+      "model": "anthropic.claude-3-7-sonnet-20250219-v1:0"
     },
     "version": "2"
   },
+  "language_models": {
+    "bedrock": {
+      "authentication_method": "named_profile",
+      "region": "us-east-1",
+      "profile": "cline-profile"
+    }
+  },
+  "indent_guides": {
+    "coloring": "indent_aware",
+    "line_width": 2,
+    "active_line_width": 3
+  },
+  "features": {
+    "edit_prediction_provider": null
+  },
+  "buffer_font_family": "BlexMono Nerd Font", // for the icons in the text
+  "buffer_font_size": 18,
+  "ui_font_size": 20,
+  "agent_font_size": 20,
   "terminal": {
     "font_family": "JetBrainsMonoNL Nerd Font",
     "font_size": 16,
-    "cursor_shape": "block",
+    "cursor_shape": "underline",
     "scrollbar": {
-      "visibility": "hidden"
+      "show": "system"
     }
   },
-  "buffer_font_size": 16,
-  "buffer_font_features": {
-    "calt": false
-  },
-  "ui_font_size": 18,
+  "format_on_save": "language_server",
+  "autosave": "on_focus_change",
   "theme": {
     "mode": "system",
     "light": "One Light",
     "dark": "Catppuccin Macchiato"
   },
-  "indent_guides": {
-    "coloring": "indent_aware",
-    "line_width": 2
+  "icon_theme": "Catppuccin Macchiato",
+  "buffer_font_features": {
+    // Disable ligatures:
+    "calt": false
   },
-  "format_on_save": "on",
-  "autosave": "on_focus_change",
   "tabs": {
     "file_icons": true,
-    "git_status": true
+    "git_status": true,
+    "show_diagnostics": "all"
+  },
+  "languages": {
+    "Java": {
+      "formatter": "prettier",
+      "format_on_save": "on",
+      "language_servers": [
+        "jdtls"
+      ]
+    }
+  },
+  "lsp": {
+    "jdtls": {
+      "initialization_options": {
+        "settings": {
+          "java": {
+            "home": "$JAVA_HOME",
+            "jdt": {
+              "ls": {
+                "lombokSupport": {
+                  "enabled": true
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  // config to disable when using work laptop
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
   }
 }
