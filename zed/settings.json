@@ -7,47 +7,33 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "show_edit_predictions": false,
+  // ABOVE THIS COMMENT KEEP AMAZON SPECIFIC CONFIGS LIKE MCP SERVERS AND SSH CONNECTIONS
+  "debugger": {
+    "dock": "left",
+    "button": true
+  },
   "agent": {
     "always_allow_tool_actions": true,
+    "default_profile": "ask",
     "model_parameters": [],
     "single_file_review": true,
-    "profiles": {
-      "sky-net": {
-        "name": "SkyNet",
-        "tools": {
-          "rename": true,
-          "code_actions": true,
-          "contents": true,
-          "thinking": true,
-          "symbol_info": true,
-          "grep": true,
-          "read_file": true,
-          "find_path": true,
-          "open": true,
-          "now": true,
-          "move_path": true,
-          "list_directory": true,
-          "edit_file": true,
-          "fetch": true,
-          "edit_files": true,
-          "diagnostics": true,
-          "delete_path": true,
-          "create_file": true,
-          "create_directory": true,
-          "copy_path": true,
-          "code_symbols": true,
-          "batch_tool": true,
-          "terminal": true
-        },
-        "enable_all_context_servers": false,
-        "context_servers": {}
-      }
+    "enable_feedback": false,
+    // The nova models are inference models, cannot be used in a thinking thread
+    "inline_assistant_model": {
+      "provider": "amazon-bedrock",
+      "model": "amazon.nova-micro-v1:0"
     },
-    "default_profile": "sky-net",
+    "commit_message_model": {
+      "provider": "amazon-bedrock",
+      "model": "amazon.nova-lite-v1:0"
+    },
+    "thread_summary_model": {
+      "provider": "amazon-bedrock",
+      "model": "amazon.nova-lite-v1:0"
+    },
     "default_model": {
-      "provider": "bedrock",
-      "model": "anthropic.claude-3-7-sonnet-20250219-v1:0"
+      "provider": "amazon-bedrock",
+      "model": "claude-3-7-sonnet-thinking"
     },
     "version": "2"
   },
@@ -58,14 +44,28 @@
       "profile": "cline-profile"
     }
   },
+  "diagnostics": {
+    "inline": {
+      "enabled": true,
+      "max_severity": null
+    }
+  },
+  "minimap": {
+    "show": "auto",
+    "thumb_border": "left_only"
+  },
   "indent_guides": {
     "coloring": "indent_aware",
     "line_width": 2,
     "active_line_width": 3
   },
   "features": {
-    "edit_prediction_provider": null
+    "edit_prediction_provider": "none"
   },
+  "file_scan_exclusions": [
+    "build/**",
+    ".brazil*/**"
+  ],
   "buffer_font_family": "BlexMono Nerd Font", // for the icons in the text
   "buffer_font_size": 18,
   "ui_font_size": 20,
@@ -105,26 +105,32 @@
     }
   },
   "lsp": {
-    "jdtls": {
-      "initialization_options": {
-        "settings": {
-          "java": {
-            "home": "$JAVA_HOME",
-            "jdt": {
-              "ls": {
-                "lombokSupport": {
-                  "enabled": true
-                }
-              }
-            }
-          }
-        }
+    "java": {
+      "settings": {
+        "java.jdt.ls.lombokSupport.enabled:": true
       }
     }
-  },
-  // config to disable when using work laptop
-  "telemetry": {
-    "diagnostics": false,
-    "metrics": false
   }
+  // "lsp": {
+  //   "jdtls": {
+  //     "initialization_options": {
+  //       "settings": {
+  //         "java": {
+  //           "home": "$JAVA_HOME",
+  //           "configuration": {
+  //             "updateBuildConfiguration": "automatic"
+  //           },
+  //           "jdt": {
+  //             "ls": {
+  //               "lombokSupport": {
+  //                 "enabled": true
+  //               }
+  //               // "vmargs": "-javaagent:$HOME/.config/jdtls/lombok.jar"
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 }
