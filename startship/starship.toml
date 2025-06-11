@@ -50,7 +50,7 @@ disabled = false
 [time]
 style = "bold yellow"
 time_format = "%R"
-format = "[   $time]($style)"
+format = "[  $time]($style)"
 disabled = false
 
 [fill]
