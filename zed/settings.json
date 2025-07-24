@@ -8,34 +8,96 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   // ABOVE THIS COMMENT KEEP AMAZON SPECIFIC CONFIGS LIKE MCP SERVERS AND SSH CONNECTIONS
+  "inlay_hints": {
+    "enabled": true
+  },
   "debugger": {
     "dock": "left",
     "button": true
   },
   "agent": {
     "always_allow_tool_actions": true,
-    "default_profile": "ask",
+    "default_profile": "sky-net",
     "model_parameters": [],
     "single_file_review": true,
+    "profiles": {
+      "ask": {
+        "name": "Ask",
+        "tools": {
+          "contents": true,
+          "diagnostics": true,
+          "fetch": true,
+          "list_directory": true,
+          "now": true,
+          "find_path": true,
+          "read_file": true,
+          "open": true,
+          "grep": true,
+          "thinking": true,
+          "web_search": true
+        },
+        "enable_all_context_servers": false,
+        "context_servers": {
+          "amazon-internal-mcp-server": {
+            "tools": {
+              "search_internal_issues": true,
+              "search_internal_code": true,
+              "write_internal_website": true,
+              "search_internal_websites": true,
+              "search_ags_confluence_website": true,
+              "read_internal_website": true
+            }
+          }
+        }
+      },
+      "sky-net": {
+        "name": "SkyNet",
+        "tools": {
+          "rename": true,
+          "code_actions": true,
+          "contents": true,
+          "thinking": true,
+          "symbol_info": true,
+          "grep": true,
+          "read_file": true,
+          "find_path": true,
+          "open": true,
+          "now": true,
+          "move_path": true,
+          "list_directory": true,
+          "edit_file": true,
+          "fetch": true,
+          "edit_files": true,
+          "diagnostics": true,
+          "delete_path": true,
+          "create_file": true,
+          "create_directory": true,
+          "copy_path": true,
+          "code_symbols": true,
+          "batch_tool": true,
+          "terminal": true
+        },
+        "enable_all_context_servers": true
+      }
+    },
     "enable_feedback": false,
     // The nova models are inference models, cannot be used in a thinking thread
     "inline_assistant_model": {
       "provider": "amazon-bedrock",
-      "model": "amazon.nova-micro-v1:0"
+      "model": "claude-3-7-sonnet-thinking"
     },
     "commit_message_model": {
       "provider": "amazon-bedrock",
-      "model": "amazon.nova-lite-v1:0"
+      "model": "claude-3-7-sonnet-thinking"
     },
     "thread_summary_model": {
       "provider": "amazon-bedrock",
-      "model": "amazon.nova-lite-v1:0"
+      "model": "claude-3-7-sonnet-thinking"
     },
     "default_model": {
       "provider": "amazon-bedrock",
-      "model": "claude-3-7-sonnet-thinking"
-    },
-    "version": "2"
+      "model": "claude-4-sonnet-thinking"
+    }
   },
   "language_models": {
     "bedrock": {
@@ -50,9 +112,14 @@
       "max_severity": null
     }
   },
+  "auto_signature_help": true,
   "minimap": {
     "show": "auto",
-    "thumb_border": "left_only"
+    "thumb_border": "none",
+    "display_in": "active_editor"
+  },
+  "active_pane_modifiers": {
+    "inactive_opacity": 0.8
   },
   "indent_guides": {
     "coloring": "indent_aware",
@@ -62,9 +129,26 @@
   "features": {
     "edit_prediction_provider": "none"
   },
+  "title_bar": {
+    "show_branch_icon": true
+  },
   "file_scan_exclusions": [
-    "build/**",
-    ".brazil*/**"
+    ".brazil",
+    ".bemol",
+    ".builder-mcp",
+    "build/",
+    "release-info/",
+    "release/",
+    "env/",
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/.jj",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings"
   ],
   "buffer_font_family": "BlexMono Nerd Font", // for the icons in the text
   "buffer_font_size": 18,
@@ -75,7 +159,7 @@
     "font_size": 16,
     "cursor_shape": "underline",
     "scrollbar": {
-      "show": "system"
+      "show": "never"
     }
   },
   "format_on_save": "language_server",
@@ -90,47 +174,159 @@
     // Disable ligatures:
     "calt": false
   },
+  "tab_bar": {
+    "show_nav_history_buttons": false
+  },
   "tabs": {
     "file_icons": true,
     "git_status": true,
     "show_diagnostics": "all"
   },
+  "file_finder": {
+    "modal_max_width": "medium"
+  },
   "languages": {
-    "Java": {
+    "Properties": {
       "formatter": "prettier",
+      "show_whitespaces": "trailing",
+      "prettier": {
+        "allowed": true
+      },
+      "format_on_save": "on"
+    },
+    "Java": {
+      "formatter": "language_server",
       "format_on_save": "on",
       "language_servers": [
         "jdtls"
       ]
+    },
+    "TypeScript": {
+      "tab_size": 4,
+      "format_on_save": "off"
     }
   },
   "lsp": {
-    "java": {
-      "settings": {
-        "java.jdt.ls.lombokSupport.enabled:": true
+    "jdtls": {
+      "initialization_options": {
+        "settings": {
+          "java": {
+            "home": ".local/share/mise/installs/java/24",
+            "configuration": {
+              "updateBuildConfiguration": "automatic",
+              "workspaceCacheLimit": 90,
+              "runtimes": []
+            },
+            "saveActions": {
+              "organizeImports": true
+            },
+            "compile": {
+              "nullAnalysis": {
+                "mode": "automatic"
+              }
+            },
+            "jdt": {
+              "ls": {
+                "lombokSupport": {
+                  "enabled": true
+                },
+                "protobufSupport": {
+                  "enabled": false
+                },
+                "vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m -Xlog:disable"
+              }
+            },
+            "eclipse": {
+              "downloadSources": false
+            },
+            "maven": {
+              "downloadSources": false
+            },
+            "gradle": {
+              "downloadSources": false
+            },
+            "autobuild": {
+              "enabled": true
+            },
+            "maxConcurrentBuilds": 1,
+            "signatureHelp": {
+              "enabled": true
+            },
+            "format": {
+              "enabled": true,
+              "settings": {
+                "url": "~/.config/jdtls/amazon-jdtls-java-format-style.xml"
+                // "url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml"
+                // "url": "~/.config/jdtls/customer-reviews-codestyle-eclipse.xml"
+              },
+              "onType": {
+                "enabled": true
+              }
+            },
+            "contentProvider": {
+              "preferred": "fernflower"
+            },
+            "import": {
+              "gradle": {
+                "enabled": true
+              },
+              "maven": {
+                "enabled": false
+              },
+              "exclusions": [
+                "**/node_modules/**",
+                "**/.metadata/**",
+                "**/archetype-resources/**",
+                "**/META-INF/maven/**"
+              ]
+            },
+            "completion": {
+              "enabled": true,
+              "favoriteStaticMembers": [
+                "org.junit.Assert.*",
+                "org.junit.Assume.*",
+                "org.junit.jupiter.api.Assertions.*",
+                "org.junit.jupiter.api.Assumptions.*",
+                "org.junit.jupiter.api.DynamicContainer.*",
+                "org.junit.jupiter.api.DynamicTest.*",
+                "org.mockito.Mockito.*",
+                "org.mockito.ArgumentMatchers.*"
+              ]
+            },
+            "errors": {
+              "incompleteClasspath": {
+                "severity": "warning"
+              }
+            },
+            "implementationsCodeLens": {
+              "enabled": true
+            },
+            "referencesCodeLens": {
+              "enabled": true
+            },
+            "dependency": {
+              "packagePresentation": "flat"
+            }
+          }
+        },
+        "extendedClientCapabilities": {
+          "progressReportsSupport": true,
+          "classFileContentsSupport": true,
+          "overrideMethodsPromptSupport": true,
+          "hashCodeEqualsPromptSupport": true,
+          "advancedOrganizeImportsSupport": true,
+          "generateToStringPromptSupport": true,
+          "advancedGenerateAccessorsSupport": true,
+          "generateConstructorsPromptSupport": true,
+          "generateDelegateMethodsPromptSupport": true,
+          "advancedExtractRefactoringSupport": true,
+          "inferSelectionSupport": [
+            "extractMethod",
+            "extractVariable",
+            "extractField"
+          ]
+        }
       }
     }
   }
-  // "lsp": {
-  //   "jdtls": {
-  //     "initialization_options": {
-  //       "settings": {
-  //         "java": {
-  //           "home": "$JAVA_HOME",
-  //           "configuration": {
-  //             "updateBuildConfiguration": "automatic"
-  //           },
-  //           "jdt": {
-  //             "ls": {
-  //               "lombokSupport": {
-  //                 "enabled": true
-  //               }
-  //               // "vmargs": "-javaagent:$HOME/.config/jdtls/lombok.jar"
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
 }

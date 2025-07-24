@@ -1,0 +1,28 @@
+[user]
+    name = Riccardo Strina
+    email = riccardo.strina@icloud.com
+
+[credential]
+    helper = osxkeychain
+
+[init]
+    defaultbranch = main
+
+[status]
+    branch = true
+    showStash = true
+
+[push]
+    autoSetupRemote = true
+
+[pull]
+    rebase = true
+
+[color]
+    ui = auto
+
+[help]
+    autocorrect = prompt
+
+[core]
+    editor = hx

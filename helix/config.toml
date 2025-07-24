@@ -1,0 +1,65 @@
+theme = "catppuccin_macchiato"
+
+[editor]
+line-number = "relative"
+cursorline = true
+color-modes = true
+popup-border = "menu"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.indent-guides]
+render = true
+bufferline = "multiple" # Always shows the buffer line at the top with open files
+skip-levels = 1
+
+# Soft wrapping for text
+[editor.soft-wrap]
+enable = true         # Enables soft wrapping of text (visual wrapping without newlines)
+max-wrap = 25         # Maximum number of columns for wrapped text
+wrap-indicator = "↪ " # Symbol shown at the beginning of wrapped lines
+
+# LSP (Language Server Protocol) settings
+[editor.lsp]
+display-inlay-hints = true # Shows inline type hints and other information from LSP
+
+# Whitespace rendering
+[editor.whitespace]
+characters = { space = "·", tab = "→", newline = "¬" } # Symbols used for whitespace
+
+[editor.whitespace.render]
+space = "all"
+tab = "all"
+newline = "none"
+
+# File picker settings
+[editor.file-picker]
+hidden = false         # When true, shows hidden files in the file picker
+follow-symlinks = true # Follows symbolic links when navigating directories
+
+# Statusline customization
+[editor.statusline]
+# Configures what information appears in different parts of the status line
+left = [
+    "mode",
+    "spinner",
+    "file-name",
+    "file-modification-indicator",
+    "version-control",
+] # items on the left side
+center = ["diagnostics", "read-only-indicator"] # items in the center
+right = [
+    "register",
+    "position",
+    "file-encoding",
+    "file-line-ending",
+    "file-type",
+] # Items on the right
+
+# Extended mode display
+mode.normal = "-- NOR --" # Instead of "NOR"
+mode.insert = "-- INS --" # Instead of "INS"
+mode.select = "-- SEL --" # Instead of "SEL"
