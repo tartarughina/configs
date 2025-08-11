@@ -8,19 +8,23 @@ This directory contains configuration files for tmux, a terminal multiplexer.
    ```
    sudo apt install tmux  # Debian/Ubuntu
    sudo dnf install tmux  # Fedora
+   brew install tmux      # MacOs
    ```
 
-2. Install Tmux Plugin Manager (TPM):
-   ```
-   git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
-   ```
+1. Install Tmux Plugin Manager (TPM):
+   - Move into the config dir and run
+      ```
+      just install-tpm
+      ```
 
-3. Start tmux:
+1. Start tmux:
    ```
    tmux
    ```
 
-4. Install plugins by pressing `Ctrl+a` followed by `I` (capital i)
+1. Install plugins by pressing `Ctrl+a` followed by `I` (capital i)
+
+1. Reload the config with `Ctrl+a` followed by `r`
 
 ## Key Bindings
 
@@ -41,7 +45,3 @@ This directory contains configuration files for tmux, a terminal multiplexer.
 - [tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect) - Save/restore sessions
 - [tmux-continuum](https://github.com/tmux-plugins/tmux-continuum) - Auto save sessions
 - [tmux-yank](https://github.com/tmux-plugins/tmux-yank) - Better copy/paste
-
-## Customization
-
-Edit the `tmux.conf` file to customize your tmux setup further.

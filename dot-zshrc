@@ -1,0 +1,51 @@
+export JAVA_HOME=/usr/local/Cellar/openjdk@11/11.0.21/libexec/openjdk.jdk/Contents/Home
+export PATH="/usr/local/opt/python@3.12/libexec/bin:/usr/local/opt/node@18/bin:$PATH"
+alias polaris='ssh tartarughina@polaris.alcf.anl.gov'
+alias lkd='ssh -p 2222 riccardo@localhost'
+export COLORTERM=truecolor
+# Enable zsh plugins
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+export EDITOR=hx
+# Enable starship prompt
+export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
+eval "$(starship init zsh)"
+
+alias ls='eza --icons=always --color=always --long'
+# mise quick usage
+# mise install will install all the tools listed in the config file
+# mise use will install and update the config file
+eval "$(mise activate zsh)"
+eval "$(fzf --zsh)"
+
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+
+export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+
+# Advanced customization of fzf options via _fzf_comprun function
+# - The first argument to the function is the name of the command.
+# - You should make sure to pass the rest of the arguments to fzf.
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview 'eza --tree --icons=always --color=always {} | head -200' "$@" ;;
+    export|unset) fzf --preview "eval 'echo $'{}"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
+  esac
+}
+
+_fzf_compgen_path() {
+  fd --hidden --exclude .git . "$1"
+}
+
+_fzf_compgen_dir() {
+  fd --type=d --hidden --exclude .git . "$1"
+}
+
+source ~/.config/fzf/plugins/fzf-git/fzf-git.sh
