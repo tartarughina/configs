@@ -26,6 +26,8 @@ This directory contains configuration files for tmux, a terminal multiplexer.
 
 1. Reload the config with `Ctrl+a` followed by `r`
 
+1. Uninstall plugins by pressing `Ctrl+a` followed by `U`
+
 ## Key Bindings
 
 - Prefix: `Ctrl+a` (changed from default `Ctrl+b`)

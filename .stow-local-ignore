@@ -3,4 +3,5 @@
 \.gitmodules
 
 ^/justfile
+^/Brewfile
 ^/README.md
