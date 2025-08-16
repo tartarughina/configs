@@ -3,4 +3,4 @@
 	url = https://github.com/junegunn/fzf-git.sh.git
 [submodule "dot-config/tmux/plugins/tpm"]
 	path = dot-config/tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm
+	url = https://github.com/tmux-plugins/tpm.git

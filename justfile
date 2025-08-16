@@ -15,11 +15,11 @@ sub-init:
     git submodule init
     git submodule update
 
-install-catppuccin:
+install-bat-catppuccin:
     mkdir -p "$(bat --config-dir)/themes"
     wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Macchiato.tmTheme
     bat cache --build
 
-remove-catppuccin:
+remove-bat-catppuccin:
     rm "$(bat --config-dir)/themes/Catppuccin%20Macchiato.tmTheme"
     bat cache --build
