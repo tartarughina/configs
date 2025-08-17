@@ -22,8 +22,6 @@ brew "lazygit"
 brew "mise"
 # Fast, highly customisable system info script
 brew "neofetch"
-# Ambitious Vim-fork focused on extensibility and agility
-brew "neovim"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Safe, concurrent, practical language
@@ -34,6 +32,10 @@ brew "starship"
 brew "stow"
 # Terminal multiplexer
 brew "tmux"
+# More intuitive version of du in rust
+brew "dust"
+# Friendly and fast tool for sending HTTP requests
+brew "xh"
 # Internet file retriever
 brew "wget"
 # Fish-like fast/unobtrusive autosuggestions for zsh

@@ -150,14 +150,16 @@
     "**/.classpath",
     "**/.settings"
   ],
-  "buffer_font_family": "JetBrainsMono Nerd Font Mono", // for the icons in the text
+  "buffer_font_family": "BlexMono Nerd Font", // for the icons in the text
   "buffer_font_size": 18,
   "ui_font_size": 20,
   "agent_font_size": 20,
   "terminal": {
     "font_family": "JetBrainsMonoNL Nerd Font",
     "font_size": 16,
-    "cursor_shape": "underline",
+    "cursor_shape": "bar",
+    "copy_on_select": true,
+    "line_height": "standard",
     "scrollbar": {
       "show": "never"
     }

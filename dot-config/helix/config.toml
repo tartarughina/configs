@@ -4,6 +4,7 @@ theme = "catppuccin_macchiato"
 line-number = "relative"
 cursorline = true
 color-modes = true
+true-color = true
 popup-border = "menu"
 
 [editor.cursor-shape]

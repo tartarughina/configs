@@ -10,8 +10,10 @@ $directory\
 $git_branch\
 $git_status\
 $fill\
+$cmd_duration\
 $time\
 $line_break\
+$status\
 $character\
 """
 
@@ -44,25 +46,38 @@ mantle = "#1e2030"
 crust = "#181926"
 
 [character]
-success_symbol = '[⌘](blue bold)'
-error_symbol = "[⌘](bright-red bold)"
+success_symbol = "[ ⌘](bold teal)"
+error_symbol = "[ ⌘](bold maroon)"
+
+[cmd_duration]
+min_time = 1000
+style = "teal bold"
+format = "[ $duration]($style) "
 
 [directory]
-format = "[$path]($style) "
+style = "bold mauve"
+format = "[$path ]($style)"
 truncation_symbol = ".../"
 
+[fill]
+style = "surface1"
+symbol = "."
+
 [git_branch]
-style = "bold bright-purple"
+style = "flamingo"
 symbol = " "
 format = "[$symbol$branch ]($style)"
 
 [git_status]
-format = "[$ahead_behind]($style)"
+style = "bold lavender"
+deleted = "-"
+staged = "+$count"
+format = "[$untracked$modified$deleted$staged$ahead_behind]($style)"
 
 [username]
 show_always = true
-style_user = "red bold"
 format = "[$user ]($style)"
+disabled = true
 
 [hostname]
 ssh_only = false
@@ -75,11 +90,13 @@ Macos = "󰀵 "
 format = "$symbol"
 disabled = false
 
-[time]
-style = "bold yellow"
-time_format = "%R"
-format = "[  $time]($style)"
+[status]
 disabled = false
+failure_style = "maroon"
+format = "[$status $common_meaning]($style)"
 
-[fill]
-symbol = "."
+[time]
+style = "bold peach"
+time_format = "%R"
+format = "[ $time]($style)"
+disabled = false
