@@ -157,7 +157,9 @@
   "terminal": {
     "font_family": "JetBrainsMonoNL Nerd Font",
     "font_size": 16,
-    "cursor_shape": "underline",
+    "cursor_shape": "bar",
+    "copy_on_select": true,
+    "line_height": "standard",
     "scrollbar": {
       "show": "never"
     }

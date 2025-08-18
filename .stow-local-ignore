@@ -1,0 +1,7 @@
+\.git
+\.gitignore
+\.gitmodules
+
+^/justfile
+^/Brewfile
+^/README.md
