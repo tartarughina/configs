@@ -93,7 +93,7 @@ disabled = false
 [status]
 disabled = false
 failure_style = "maroon"
-format = "[$status $common_meaning]($style)"
+format = "[$status $common_meaning ]($style)"
 
 [time]
 style = "bold peach"
