@@ -1,3 +1,15 @@
+default:
+    just --list
+
+config: sub-init
+    stow -t ~ --dotfiles dot-config
+
+restow-config: sub-init
+    stow -t ~ --dotfiles --restow dot-config
+
+unstow-config:
+    stow -t ~ --dotfiles --delete dot-config
+
 stow: sub-init
     stow -t ~ --dotfiles .
 
