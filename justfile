@@ -2,13 +2,13 @@ default:
     just --list
 
 config: sub-init
-    stow -t ~ --dotfiles dot-config
+    stow -t ~ --dotfiles . --ignore zshrc
 
 restow-config: sub-init
-    stow -t ~ --dotfiles --restow dot-config
+    stow -t ~ --dotfiles --restow . --ignore zshrc
 
 unstow-config:
-    stow -t ~ --dotfiles --delete dot-config
+    stow -t ~ --dotfiles --delete . --ignore zshrc
 
 stow: sub-init
     stow -t ~ --dotfiles .
