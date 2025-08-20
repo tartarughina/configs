@@ -96,7 +96,7 @@
     },
     "default_model": {
       "provider": "amazon-bedrock",
-      "model": "claude-4-sonnet-thinking"
+      "model": "claude-3-7-sonnet-thinking"
     }
   },
   "language_models": {
@@ -157,9 +157,8 @@
   "terminal": {
     "font_family": "JetBrainsMonoNL Nerd Font",
     "font_size": 16,
-    "cursor_shape": "bar",
-    "copy_on_select": true,
     "line_height": "standard",
+    "cursor_shape": "bar",
     "scrollbar": {
       "show": "never"
     }
