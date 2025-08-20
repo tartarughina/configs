@@ -1,14 +1,17 @@
 default:
     just --list
 
-work: sub-init
-    stow -t ~ --dotfiles . --ignore zshrc --ignore config/git
+stow-work: sub-init
+    stow -t ~ --dotfiles . --ignore zshrc --ignore config/git --ignore config/zed
+
+sim-stow-work: sub-init
+    stow -t ~ --dotfiles . --ignore zshrc --ignore config/git --ignore config/zed
 
 restow-work: sub-init
-    stow -t ~ --dotfiles --restow . --ignore zshrc --ignore config/git
+    stow -t ~ --dotfiles --restow . --ignore zshrc --ignore config/git --ignore config/zed
 
 unstow-work:
-    stow -t ~ --dotfiles --delete . --ignore zshrc --ignore config/git
+    stow -t ~ --dotfiles --delete . --ignore zshrc --ignore config/git --ignore config/zed
 
 stow: sub-init
     stow -t ~ --dotfiles .
