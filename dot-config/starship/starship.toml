@@ -5,6 +5,7 @@ palette = "catppuccin_macchiato"
 add_newline = true
 
 format = """
+$hostname\
 $username\
 $directory\
 $git_branch\
@@ -80,8 +81,8 @@ format = "[$user ]($style)"
 disabled = true
 
 [hostname]
-ssh_only = false
-format = "[$hostname](bold bright-green) "
+ssh_only = true
+format = "[$hostname](bold rosewater) "
 
 [os.symbols]
 Macos = "󰀵 "
