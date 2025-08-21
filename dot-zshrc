@@ -12,6 +12,7 @@ alias ls='eza --icons=always --color=always --long'
 # mise quick usage
 # mise install will install all the tools listed in the config file
 # mise use will install and update the config file
+eval "$(brew shellenv)"
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 eval "$(starship init zsh)"
 eval "$(mise activate zsh)"
