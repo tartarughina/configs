@@ -17,4 +17,4 @@ confirm-close-surface = false
 window-save-state = always
 copy-on-select = clipboard
 
-window-padding-x = 8
+window-padding-x = 8, 4
