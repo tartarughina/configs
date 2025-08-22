@@ -53,7 +53,7 @@ error_symbol = "[⌘](bold maroon)"
 [cmd_duration]
 min_time = 1000
 style = "teal bold"
-format = "[ $duration]($style) "
+format = " [ $duration]($style)"
 
 [directory]
 style = "bold mauve"
@@ -73,7 +73,7 @@ format = "[$symbol$branch ]($style)"
 style = "bold lavender"
 deleted = "-"
 staged = "+$count"
-format = "[$untracked$modified$deleted$staged$ahead_behind]($style)"
+format = "[$untracked$modified$deleted$staged$ahead_behind]($style) "
 
 [username]
 show_always = true
@@ -99,5 +99,5 @@ format = "[$status $common_meaning ]($style)"
 [time]
 style = "bold peach"
 time_format = "%R"
-format = "[ $time]($style)"
+format = " [ $time]($style)"
 disabled = false
