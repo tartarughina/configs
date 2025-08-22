@@ -4,3 +4,12 @@
 [submodule "dot-config/tmux/plugins/tpm"]
 	path = dot-config/tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
+[submodule "dot-config/zsh/zsh-syntax-highlighting"]
+	path = dot-config/zsh/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "dot-config/zsh/catppuccin-syntax-highlighting"]
+	path = dot-config/zsh/catppuccin-syntax-highlighting
+	url = https://github.com/catppuccin/zsh-syntax-highlighting.git
+[submodule "dot-config/zsh/zsh-autosuggestions"]
+	path = dot-config/zsh/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions.git
