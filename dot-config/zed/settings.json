@@ -160,6 +160,7 @@
     "copy_on_select": true,
     "line_height": "standard",
     "cursor_shape": "bar",
+    "option_as_meta": true,
     "scrollbar": {
       "show": "never"
     }

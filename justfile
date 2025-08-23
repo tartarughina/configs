@@ -56,4 +56,4 @@ install-delta-catppuccin: brew-formula
 
 # For more themes https://github.com/eza-community/eza-themes/tree/main/themes
 install-eza-catppuccin: brew-formula
-    xh --download --output dot-config/eza/ https://raw.githubusercontent.com/eza-community/eza-themes/refs/heads/main/themes/catppuccin.yml
+    xh --download --output dot-config/eza/theme.yml https://raw.githubusercontent.com/eza-community/eza-themes/refs/heads/main/themes/catppuccin.yml
