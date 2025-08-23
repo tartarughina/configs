@@ -38,6 +38,9 @@ sub-init:
     git submodule init
     git submodule update
 
+tic-ghostty ssh-host:
+    infocmp -x xterm-ghostty | ssh {{ ssh-host }} -- tic -x -
+
 install-bat-catppuccin:
     mkdir -p "$(bat --config-dir)/themes"
     wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Macchiato.tmTheme
