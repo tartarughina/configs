@@ -10,6 +10,7 @@ $username\
 $directory\
 $git_branch\
 $git_status\
+$git_metrics\
 $fill\
 $cmd_duration\
 $time\
@@ -69,11 +70,20 @@ style = "flamingo"
 symbol = " "
 format = "[$symbol$branch ]($style)"
 
+[git_metrics]
+added_style = "bold green"
+deleted_style = "bold red"
+format = "([+$added]($added_style) )([-$deleted]($deleted_style) )"
+disabled = false
+
 [git_status]
 style = "bold lavender"
-deleted = "-"
+deleted = "-$count"
 staged = "+$count"
-format = "[$untracked$modified$deleted$staged$ahead_behind]($style)"
+ahead = ""
+behind = ""
+diverged = ""
+format = "[($untracked$modified$deleted$staged$ahead_behind )]($style)"
 
 [username]
 show_always = true
@@ -94,7 +104,7 @@ disabled = false
 [status]
 disabled = false
 failure_style = "maroon"
-format = "[$status $common_meaning ]($style)"
+format = "[($status )($common_meaning )]($style)"
 
 [time]
 style = "bold peach"
