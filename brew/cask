@@ -1,0 +1,40 @@
+# Voice and text chat software
+cask "discord"
+# Web browser
+cask "firefox"
+cask "google-chrome"
+# Fonts
+cask "font-blex-mono-nerd-font"
+cask "font-jetbrains-mono-nerd-font"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
+# Trading software
+cask "ibkr"
+# Vector graphics editor
+cask "inkscape"
+# Software for Logitech devices
+cask "logi-options+"
+# Sandbox construction video game
+cask "minecraft"
+# Cloud gaming platform
+cask "nvidia-geforce-now"
+# Collaboration platform for API development
+cask "postman"
+# Toolbox companion for QMK Firmware
+cask "qmk-toolbox"
+# Team communication and collaboration software
+cask "slack"
+# Video communication and virtual meeting platform
+cask "zoom"
+# Music streaming service
+cask "spotify"
+# System monitor for the menu bar
+cask "stats"
+# Open-source code editor
+cask "visual-studio-code"
+# Multimedia player
+cask "vlc"
+# Create, manage, and run virtual machines
+cask "vmware-fusion"
+# Multiplayer code editor
+cask "zed"

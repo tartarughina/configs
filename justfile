@@ -1,6 +1,14 @@
 default:
     just --list
 
+brew: brew-cask brew-formula
+
+brew-cask:
+    brew bundle install --upgrade --file=brew/cask
+
+brew-formula:
+    brew bundle install --upgrade --file=brew/formula
+
 stow-work: sub-init
     stow -t ~ --dotfiles . --ignore zshrc --ignore config/git --ignore config/zed
 
