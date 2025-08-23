@@ -83,7 +83,7 @@ staged = "+$count"
 ahead = ""
 behind = ""
 diverged = ""
-format = "[($untracked$modified$deleted$staged$ahead_behind )]($style)"
+format = "[($ahead_behind$untracked$modified$deleted$staged )]($style)"
 
 [username]
 show_always = true
@@ -103,7 +103,7 @@ disabled = false
 
 [status]
 disabled = false
-failure_style = "maroon"
+failure_style = "italic red"
 format = "[($status )($common_meaning )]($style)"
 
 [time]
