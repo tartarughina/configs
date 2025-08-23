@@ -2,7 +2,7 @@ export JAVA_HOME=/usr/local/Cellar/openjdk@11/11.0.21/libexec/openjdk.jdk/Conten
 export PATH="/usr/local/opt/python@3.12/libexec/bin:/usr/local/opt/node@18/bin:$PATH"
 alias polaris='ssh tartarughina@polaris.alcf.anl.gov'
 alias lkd='ssh -p 2222 riccardo@localhost'
-export COLORTERM=truecolor
+# export COLORTERM=truecolor
 # Enable zsh plugins
 source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.config/zsh/catppuccin-syntax-highlighting/themes/catppuccin_macchiato-zsh-syntax-highlighting.zsh
@@ -17,6 +17,7 @@ eval "$(brew shellenv)"
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 eval "$(starship init zsh)"
 eval "$(mise activate zsh)"
+export EZA_CONFIG_DIR=~/.config/eza
 eval "$(fzf --zsh)"
 
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"

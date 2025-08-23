@@ -31,7 +31,11 @@
 [interactive]
     diffFilter = delta --color-only
 
+[include]
+	path = ~/.config/delta/themes/catppuccin.gitconfig
+
 [delta]
+    features = catppuccin-macchiato
     navigate = true
     side-by-side = true
 
