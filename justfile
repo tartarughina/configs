@@ -38,10 +38,12 @@ sub-init:
     git submodule init
     git submodule update
 
-tic-ghostty ssh-host: brew-cask
+tic-ghostty ssh-host:
     infocmp -x xterm-ghostty | ssh {{ ssh-host }} -- tic -x -
 
-install-bat-catppuccin: brew-formula
+catppuccin: bat-catppuccin delta-catppuccin eza-catppuccin fzf-catppuccin gitui-catppuccin
+
+bat-catppuccin:
     mkdir -p "$(bat --config-dir)/themes"
     wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Macchiato.tmTheme
     bat cache --build
@@ -50,10 +52,17 @@ remove-bat-catppuccin:
     rm "$(bat --config-dir)/themes/Catppuccin%20Macchiato.tmTheme"
     bat cache --build
 
-install-delta-catppuccin: brew-formula
+delta-catppuccin:
     mkdir -p dot-config/delta/themes
     wget -P dot-config/delta/themes https://raw.githubusercontent.com/catppuccin/delta/refs/heads/main/catppuccin.gitconfig
 
 # For more themes https://github.com/eza-community/eza-themes/tree/main/themes
-install-eza-catppuccin: brew-formula
+eza-catppuccin:
     xh --download --output dot-config/eza/theme.yml https://raw.githubusercontent.com/eza-community/eza-themes/refs/heads/main/themes/catppuccin.yml
+
+fzf-catppuccin:
+    mkdir -p dot-config/fzf/themes
+    wget -P dot-config/fzf/themes https://raw.githubusercontent.com/catppuccin/fzf/refs/heads/main/themes/catppuccin-fzf-macchiato.sh
+
+gitui-catppuccin:
+    xh --download --output dot-config/gitui/theme.ron https://raw.githubusercontent.com/catppuccin/gitui/refs/heads/main/themes/catppuccin-macchiato.ron

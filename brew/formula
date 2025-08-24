@@ -19,7 +19,7 @@ brew "helix"
 # Handy way to save and run project-specific commands
 brew "just"
 # Simple terminal UI for git commands
-brew "lazygit"
+brew "gitui"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
 # Fast, highly customisable system info script
@@ -36,3 +36,5 @@ brew "tmux"
 brew "wget"
 # Friendly and fast tool for sending HTTP requests
 brew "xh"
+# Examples for the terminal tools
+brew "tlrc"
