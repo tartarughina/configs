@@ -26,7 +26,7 @@ zmodload zsh/complist
 compinit
 
 export EZA_CONFIG_DIR=$CONFIG_DIR/eza
-alias l='eza --icons=always --color=always --total-size'
+alias l='eza --icons=always --color=always'
 alias ls='l --long'
 alias lt='l --tree -L 2'
 
