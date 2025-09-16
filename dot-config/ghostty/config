@@ -1,4 +1,3 @@
-font-family = JetBrainsMono Nerd Font
 font-size = 16
 
 theme = Catppuccin Macchiato
@@ -14,9 +13,10 @@ mouse-hide-while-typing = true
 
 confirm-close-surface = false
 
-window-save-state = always
 copy-on-select = clipboard
 
 window-padding-x = 8, 4
 
 macos-option-as-alt = true
+
+shell-integration-features = sudo, ssh-env, ssh-terminfo
