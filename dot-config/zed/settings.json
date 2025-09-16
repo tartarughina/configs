@@ -211,12 +211,18 @@
   },
   "lsp": {
     "jdtls": {
+      "binary": {
+        "ignore_system_version": false
+      },
       "initialization_options": {
         "settings": {
           "java": {
-            "home": ".local/share/mise/installs/java/24",
+            "home": "~/.local/share/mise/installs/java/24",
             "configuration": {
-              "updateBuildConfiguration": "automatic",
+              "updateBuildConfiguration": "interactive",
+              "maven": {
+                "userSettings": null
+              },
               "workspaceCacheLimit": 90,
               "runtimes": []
             },
@@ -234,19 +240,19 @@
                   "enabled": true
                 },
                 "protobufSupport": {
-                  "enabled": false
+                  "enabled": true
                 },
-                "vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m -Xlog:disable"
+                "vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2.5G -Xms100m -Xlog:disable"
               }
             },
             "eclipse": {
-              "downloadSources": false
+              "downloadSources": true
             },
             "maven": {
-              "downloadSources": false
+              "downloadSources": true
             },
             "gradle": {
-              "downloadSources": false
+              "downloadSources": true
             },
             "autobuild": {
               "enabled": true
@@ -259,41 +265,43 @@
               "enabled": true,
               "settings": {
                 "url": "~/.config/jdtls/amazon-jdtls-java-format-style.xml"
-                // "url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml"
-                // "url": "~/.config/jdtls/customer-reviews-codestyle-eclipse.xml"
               },
               "onType": {
                 "enabled": true
               }
             },
             "contentProvider": {
-              "preferred": "fernflower"
+              "preferred": null
             },
             "import": {
               "gradle": {
                 "enabled": true
               },
               "maven": {
-                "enabled": false
+                "enabled": true
               },
               "exclusions": [
                 "**/node_modules/**",
                 "**/.metadata/**",
                 "**/archetype-resources/**",
-                "**/META-INF/maven/**"
+                "**/META-INF/maven/**",
+                "/**/test/**"
               ]
             },
             "completion": {
-              "enabled": true,
               "favoriteStaticMembers": [
                 "org.junit.Assert.*",
                 "org.junit.Assume.*",
                 "org.junit.jupiter.api.Assertions.*",
                 "org.junit.jupiter.api.Assumptions.*",
                 "org.junit.jupiter.api.DynamicContainer.*",
-                "org.junit.jupiter.api.DynamicTest.*",
-                "org.mockito.Mockito.*",
-                "org.mockito.ArgumentMatchers.*"
+                "org.junit.jupiter.api.DynamicTest.*"
+              ],
+              "importOrder": [
+                "java",
+                "javax",
+                "com",
+                "org"
               ]
             },
             "errors": {
@@ -302,10 +310,10 @@
               }
             },
             "implementationsCodeLens": {
-              "enabled": true
+              "enabled": false
             },
             "referencesCodeLens": {
-              "enabled": true
+              "enabled": false
             },
             "dependency": {
               "packagePresentation": "flat"
