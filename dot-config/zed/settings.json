@@ -151,9 +151,9 @@
     "**/.settings"
   ],
   "buffer_font_family": "BlexMono Nerd Font", // for the icons in the text
-  "buffer_font_size": 18,
-  "ui_font_size": 20,
-  "agent_font_size": 20,
+  "buffer_font_size": 16,
+  "ui_font_size": 18,
+  "agent_font_size": 18,
   "terminal": {
     "font_family": "JetBrainsMonoNL Nerd Font",
     "font_size": 16,
