@@ -8,12 +8,12 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   // ABOVE THIS COMMENT KEEP AMAZON SPECIFIC CONFIGS LIKE MCP SERVERS AND SSH CONNECTIONS
+  "formatter": "language_server",
   "inlay_hints": {
     "enabled": true
   },
   "debugger": {
-    "dock": "left",
-    "button": true
+    "dock": "left"
   },
   "agent": {
     "always_allow_tool_actions": true,
@@ -153,7 +153,7 @@
   "buffer_font_family": "BlexMono Nerd Font", // for the icons in the text
   "buffer_font_size": 16,
   "ui_font_size": 18,
-  "agent_font_size": 18,
+  "agent_ui_font_size": 18,
   "terminal": {
     "font_family": "JetBrainsMonoNL Nerd Font",
     "font_size": 16,
@@ -165,7 +165,7 @@
       "show": "never"
     }
   },
-  "format_on_save": "language_server",
+  "format_on_save": "on",
   "autosave": "on_focus_change",
   "theme": {
     "mode": "system",
@@ -186,7 +186,7 @@
     "show_diagnostics": "all"
   },
   "file_finder": {
-    "modal_max_width": "medium"
+    "modal_max_width": "large"
   },
   "languages": {
     "Properties": {
