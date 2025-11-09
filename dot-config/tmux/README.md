@@ -12,11 +12,12 @@ This directory contains configuration files for tmux, a terminal multiplexer.
    ```
 
 1. Install Tmux Plugin Manager (TPM):
-   - Move into the config dir and run
+    - Move into the config dir and run
       ```
-      just install-tpm
+      just sub-init
       ```
-
+    - This will clone TPM repo and initialize it, alongside other submodules in the this repo
+    - To install only TPM check out its [repo](https://github.com/tmux-plugins/tpm.git) and clone it. Maintain the same directory structure as the one set here.
 1. Start tmux:
    ```
    tmux
