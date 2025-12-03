@@ -1,6 +1,7 @@
 font-size = 16
 
 theme = Catppuccin Macchiato
+background-opacity = 0.95
 
 macos-icon = retro
 
@@ -20,4 +21,5 @@ window-inherit-working-directory = true
 
 macos-option-as-alt = true
 
+shell-integration = zsh
 shell-integration-features = sudo, ssh-env, ssh-terminfo
