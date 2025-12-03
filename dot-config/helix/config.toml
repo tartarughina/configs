@@ -6,6 +6,7 @@ cursorline = true
 color-modes = true
 true-color = true
 popup-border = "menu"
+bufferline = "multiple"
 
 [editor.cursor-shape]
 insert = "bar"
@@ -14,7 +15,6 @@ select = "underline"
 
 [editor.indent-guides]
 render = true
-bufferline = "multiple" # Always shows the buffer line at the top with open files
 skip-levels = 1
 
 # Soft wrapping for text
