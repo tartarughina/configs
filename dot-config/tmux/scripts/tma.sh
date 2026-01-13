@@ -6,6 +6,6 @@ tma() {
       --border --algo=v1 --prompt="attach> " \
       --preview-label=" tmux sessions " --preview-label-pos=top --preview-window=border-rounded \
     --preview '$HOME/.config/tmux/scripts/tmux_tree_arc.sh {} | bat --style=plain --color=always' \
-    --preview-window=right:50% --print-query)"
+    --preview-window=right:70% --print-query)"
   [[ -n "$session" ]] && tmux attach -t "$session" || [[ -n "$query" ]] && tmux new -s "$query"
 }
