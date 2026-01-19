@@ -3,7 +3,7 @@
 sessions=$(tmux ls -F'#{session_id}:#{session_name}: #{T:tree_mode_format}')
 while IFS=: read -r sid sname srest; do
     if [[ "$1" == "$sname" ]]; then
-        echo -e "\033[1;34m $sname: $srest\033[0m"
+        echo -e "\033[1;38;2;198;160;246m $sname: $srest\033[0m"
     else
         echo -e "\033[1m $sname: $srest\033[0m"
     fi
