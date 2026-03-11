@@ -41,7 +41,7 @@ sub-init:
 tic-ghostty ssh-host:
     infocmp -x xterm-ghostty | ssh {{ ssh-host }} -- tic -x -
 
-catppuccin: bat-catppuccin delta-catppuccin eza-catppuccin fzf-catppuccin gitui-catppuccin
+catppuccin: bat-catppuccin delta-catppuccin eza-catppuccin gitui-catppuccin
 
 bat-catppuccin:
     mkdir -p "$(bat --config-dir)/themes"
@@ -59,10 +59,6 @@ delta-catppuccin:
 # For more themes https://github.com/eza-community/eza-themes/tree/main/themes
 eza-catppuccin:
     xh --download --output dot-config/eza/theme.yml https://raw.githubusercontent.com/eza-community/eza-themes/refs/heads/main/themes/catppuccin.yml
-
-fzf-catppuccin:
-    mkdir -p dot-config/fzf/themes
-    wget -P dot-config/fzf/themes https://raw.githubusercontent.com/catppuccin/fzf/refs/heads/main/themes/catppuccin-fzf-macchiato.sh
 
 gitui-catppuccin:
     xh --download --output dot-config/gitui/theme.ron https://raw.githubusercontent.com/catppuccin/gitui/refs/heads/main/themes/catppuccin-macchiato.ron
