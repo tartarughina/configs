@@ -2,3 +2,4 @@ inherits = "catppuccin_macchiato"
 
 "ui.background" = { }
 "ui.bufferline.background" = { }
+"ui.cursorline.primary" = { }
