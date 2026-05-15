@@ -58,7 +58,7 @@ delta-catppuccin:
 
 # For more themes https://github.com/eza-community/eza-themes/tree/main/themes
 eza-catppuccin:
-    xh --download --output dot-config/eza/theme.yml https://raw.githubusercontent.com/eza-community/eza-themes/refs/heads/main/themes/catppuccin.yml
+    xh --download --output dot-config/eza/theme.yml https://raw.githubusercontent.com/eza-community/eza-themes/refs/heads/main/themes/catppuccin-macchiato.yml
 
 gitui-catppuccin:
     xh --download --output dot-config/gitui/theme.ron https://raw.githubusercontent.com/catppuccin/gitui/refs/heads/main/themes/catppuccin-macchiato.ron

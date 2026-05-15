@@ -23,7 +23,7 @@ brew "gitui"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
 # Fast, highly customisable system info script
-brew "neofetch"
+brew "macchina"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Cross-shell prompt for astronauts

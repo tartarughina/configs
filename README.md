@@ -52,4 +52,3 @@ For the terminal I prefer `font-jetbrains-mono-nerd-font` while for the IDE I li
 ### To consider
 - **zoxide** to replace cd. However out of all options this is the most concerning as scripts will break
 - **presenterm** for presenting md files from the terminal. People will shout NERD at you
-- **macchina** as `neofetch` is no longer maintained
