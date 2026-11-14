@@ -1,14 +1,41 @@
-export JAVA_HOME=$HOME/.local/share/mise/installs/java/24
-export PATH="/usr/local/opt/python@3.12/libexec/bin:/usr/local/opt/node@18/bin:$PATH"
-alias polaris='ssh tartarughina@polaris.alcf.anl.gov'
-alias lkd='ssh -p 2222 riccardo@localhost'
-
 export CONFIG_DIR=$HOME/.config
 
+# Keep PATH and fpath free of duplicate entries
+typeset -U path fpath
+
+# Always track the latest Java version
+export JAVA_HOME=$HOME/.local/share/mise/installs/java/latest
+
+# Homebrew: static equivalent of `eval "$(brew shellenv)"` (saves ~25ms per
+# shell). The prefix is detected so this works on Apple Silicon, Intel and Linux.
+for HOMEBREW_PREFIX in /opt/homebrew /usr/local /home/linuxbrew/.linuxbrew; do
+  [[ -x $HOMEBREW_PREFIX/bin/brew ]] && break
+done
+if [[ -x $HOMEBREW_PREFIX/bin/brew ]]; then
+  export HOMEBREW_PREFIX
+  export HOMEBREW_CELLAR="$HOMEBREW_PREFIX/Cellar"
+  if [[ -d $HOMEBREW_PREFIX/Homebrew ]]; then
+    export HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX/Homebrew"   # Intel macOS, Linux
+  else
+    export HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX"            # Apple Silicon
+  fi
+  fpath[1,0]="$HOMEBREW_PREFIX/share/zsh/site-functions"
+  path=($HOMEBREW_PREFIX/bin $HOMEBREW_PREFIX/sbin $path)
+  [ -z "${MANPATH-}" ] || export MANPATH=":${MANPATH#:}"
+  export INFOPATH="$HOMEBREW_PREFIX/share/info:${INFOPATH:-}"
+else
+  unset HOMEBREW_PREFIX
+fi
+
 # Enable zsh plugins
-source $CONFIG_DIR/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $CONFIG_DIR/zsh/catppuccin-syntax-highlighting/themes/catppuccin_macchiato-zsh-syntax-highlighting.zsh
-source $CONFIG_DIR/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# zsh-defer runs queued commands after the first prompt is drawn (FIFO order),
+# so the prompt appears sooner. Syntax highlighting is queued at the very end
+# of this file so it wraps every widget defined before it.
+source $CONFIG_DIR/zsh/zsh-defer/zsh-defer.plugin.zsh
+# fzf-tab must load after compinit (deferred tasks run after this file) and
+# before any plugin that wraps widgets (autosuggestions, syntax highlighting).
+zsh-defer source $CONFIG_DIR/zsh/fzf-tab/fzf-tab.plugin.zsh
+zsh-defer source $CONFIG_DIR/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 export EDITOR=hx
 export VISUAL=hx
@@ -18,26 +45,57 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey '^e' edit-command-line
 
-# Enable completions with TAB
-# Navigate the options with arrow keys
+# Enable completions with TAB (fzf-tab shows the matches in fzf)
+# Extra completion dir: ~/.zfunc holds generated _<tool> files, kept up to
+# date by $CONFIG_DIR/zsh/zfunc.zsh (sourced further down, after PATH is set).
+fpath=(~/.zfunc $fpath)
+
 autoload -U compinit
-zstyle ':completion:*' menu select
+# One zstyle per style: extra words on a line become values of the first style.
+zstyle ':completion:*' menu no                      # fzf-tab replaces the menu
+zstyle ':completion:*' completer _extensions _complete _approximate
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'   # case-insensitive
+zstyle ':completion:*:descriptions' format '[%d]'   # fzf-tab group headers
+zstyle ':completion:*:git-checkout:*' sort false    # keep git's own ordering
+
+# fzf-tab
+zstyle ':fzf-tab:*' use-fzf-default-opts yes        # catppuccin colors from FZF_DEFAULT_OPTS
+zstyle ':fzf-tab:*' switch-group '<' '>'            # cycle completion groups
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --icons=always --color=always $realpath'
+zstyle ':fzf-tab:complete:(hx|e|bat|cat|less):*' fzf-preview \
+  '[[ -d $realpath ]] && eza -1 --icons=always --color=always $realpath || bat -n --color=always --line-range :200 $realpath 2>/dev/null'
+zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-preview \
+  '[[ $group == "[process ID]" ]] && ps -o pid,user,%cpu,%mem,command -p $word'
+zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-flags --preview-window=down:3:wrap
+zstyle ':fzf-tab:complete:git-(add|diff|restore):*' fzf-preview 'git diff --color=always -- $word | delta 2>/dev/null'
+zstyle ':fzf-tab:complete:git-(checkout|switch|log|show):*' fzf-preview 'git log --oneline --graph --color=always -20 $word 2>/dev/null'
+zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset):*' fzf-preview 'echo ${(P)word}'
+zstyle ':fzf-tab:complete:tldr:argument-1' fzf-preview 'tldr --color always $word'
 zmodload zsh/complist
-compinit
+# -C reuses the cached ~/.zcompdump without rescanning fpath. Updated files are
+# picked up automatically; only after adding a NEW completion file run:
+#   rm -f ~/.zcompdump* && exec zsh
+compinit -C
 
 export EZA_CONFIG_DIR=$CONFIG_DIR/eza
 alias l='eza --icons=always --color=always'
 alias ls='l --long'
 alias lt='l --tree -L 2'
 
-eval "$(brew shellenv)"
-
 export STARSHIP_CONFIG=$CONFIG_DIR/starship/starship.toml
 eval "$(starship init zsh)"
 
 eval "$(mise activate zsh)"
 
-eval "$(fzf --zsh)"
+# mise's prompt hook assigns PATH as a string, which bypasses `typeset -U`;
+# re-assigning the array after it runs drops the duplicates again.
+_dedup_path() { path=($path) }
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd _dedup_path
+
+zsh-defer -c 'eval "$(fzf --zsh)"'
 
 source $CONFIG_DIR/fzf/themes/catppuccin-fzf-macchiato.sh
 
@@ -71,6 +129,17 @@ _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
 
+# tmux sessions picker
 source $CONFIG_DIR/tmux/scripts/tma.sh
 
-source $CONFIG_DIR/fzf/plugins/fzf-git/fzf-git.sh
+zsh-defer source $CONFIG_DIR/fzf/plugins/fzf-git/fzf-git.sh
+
+# Regenerate stale ~/.zfunc completions in the background (needs final PATH)
+source $CONFIG_DIR/zsh/zfunc.zsh
+
+# ports: fzf view of listening sockets with kill keys (ss on Linux, lsof on macOS)
+source $CONFIG_DIR/zsh/ports.zsh
+
+# Keep last: deferred syntax highlighting (theme must load before the plugin)
+zsh-defer source $CONFIG_DIR/zsh/catppuccin-syntax-highlighting/themes/catppuccin_macchiato-zsh-syntax-highlighting.zsh
+zsh-defer source $CONFIG_DIR/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

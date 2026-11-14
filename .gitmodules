@@ -13,3 +13,9 @@
 [submodule "dot-config/zsh/zsh-autosuggestions"]
 	path = dot-config/zsh/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
+[submodule "dot-config/zsh/zsh-defer"]
+	path = dot-config/zsh/zsh-defer
+	url = https://github.com/romkatv/zsh-defer.git
+[submodule "dot-config/zsh/fzf-tab"]
+	path = dot-config/zsh/fzf-tab
+	url = https://github.com/Aloxaf/fzf-tab.git
