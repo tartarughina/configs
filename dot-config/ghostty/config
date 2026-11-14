@@ -3,6 +3,7 @@ font-size = 16
 theme = Catppuccin Macchiato
 # background-opacity = 0.95
 background-opacity = 0.875
+# unfocused-split-fill = #c6a0f6
 
 macos-icon = retro
 
@@ -12,10 +13,12 @@ adjust-cursor-thickness = 120%
 adjust-cursor-height = -15%
 
 mouse-hide-while-typing = true
+focus-follows-mouse = true
 
 confirm-close-surface = false
 
 copy-on-select = clipboard
+clipboard-trim-trailing-spaces = true
 
 window-padding-balance = true
 window-inherit-working-directory = true
