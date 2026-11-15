@@ -63,12 +63,13 @@ zstyle ':completion:*:git-checkout:*' sort false    # keep git's own ordering
 # fzf-tab
 zstyle ':fzf-tab:*' use-fzf-default-opts yes        # catppuccin colors from FZF_DEFAULT_OPTS
 zstyle ':fzf-tab:*' switch-group '<' '>'            # cycle completion groups
+zstyle ':fzf-tab:*' fzf-flags --wrap                # wrap long descriptions (fzf >= 0.54)
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --icons=always --color=always $realpath'
 zstyle ':fzf-tab:complete:(hx|e|bat|cat|less):*' fzf-preview \
   '[[ -d $realpath ]] && eza -1 --icons=always --color=always $realpath || bat -n --color=always --line-range :200 $realpath 2>/dev/null'
 zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-preview \
   '[[ $group == "[process ID]" ]] && ps -o pid,user,%cpu,%mem,command -p $word'
-zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-flags --preview-window=down:3:wrap
+zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-flags --wrap --preview-window=down:3:wrap
 zstyle ':fzf-tab:complete:git-(add|diff|restore):*' fzf-preview 'git diff --color=always -- $word | delta 2>/dev/null'
 zstyle ':fzf-tab:complete:git-(checkout|switch|log|show):*' fzf-preview 'git log --oneline --graph --color=always -20 $word 2>/dev/null'
 zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset):*' fzf-preview 'echo ${(P)word}'
